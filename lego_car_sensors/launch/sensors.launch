@@ -1,0 +1,10 @@
+<!-- this launchfile starts the engine node -->
+
+<launch>
+  <!--Load parameters -->
+
+  <!-- start general visualization -->
+  <node name="UltraSonicSensor" pkg="lego_car_sensors" type="ultra_sonic.py" output="log" />
+
+
+</launch>

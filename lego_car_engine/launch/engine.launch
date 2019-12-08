@@ -4,7 +4,7 @@
   <!--Load parameters -->
 
   <!-- start general visualization -->
-  <node name="leftTankTngine" pkg="lego_car_engine" type="left_tank_engine.py" output="log" />
-  <node name="rightTankTngine" pkg="lego_car_engine" type="right_tank_engine.py" output="log" />
+  <node name="leftTankEngine" pkg="lego_car_engine" type="left_tank_engine.py" output="log" />
+  <node name="rightTankEngine" pkg="lego_car_engine" type="right_tank_engine.py" output="log" />
 
 </launch>
