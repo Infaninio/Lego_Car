@@ -2,7 +2,7 @@
 An ROS implementation for driving a lego car with two engines (left and right engine). The engines (the whole car) is controlled with a Raspberry PI3b. In PinBelegung.txt are the used GPOIOs listed. The car includes two engines, a Ultrasonic Sensor and a Camera. ROS is used to be able to run the driving-Programs on a Laptop or Desktop and the Software for the sensors/actors on the Raspberry. 
 
 # Install Raspberry
-The ROS installation is based on https://roboticsbackend.com/install-ros-on-raspberry-pi-3/.
+The ROS installation is based on https://roboticsbackend.com/install-ros-on-raspberry-pi-3/. You have to use ROS noetic instead of melodic due to the Ubuntu Version.
 - Prepare sd-Card with Ubuntu 20.04 (!not Raspbian)
 - Enable Repository sources
 ```shell
@@ -28,3 +28,37 @@ Install ROS, we do not install the full version. All the Vision based things run
 
 
 # Install Host
+Use Ubuntu 20.04
+
+Installe ROS as Described here: wiki.ros.org/noetic/Installation/Ubuntu
+
+
+
+
+# Setup the Workspace same for Host and Rasperry
+Create a Folder for the catkin Workspace the. Create a src folder inside the new folder. Afterwards create the catkin Workspace. 
+```shell
+    mkdir lego_car
+    cd lego_car
+    mkdir src
+    catkin_make
+```
+
+If the System does not find catkin, you forgot to source ROS 
+```shell
+    source /opt/ros/noetic/setup.bash
+```
+
+Clone this Repository insto the src directory.
+
+```shell
+    cd src
+    git clone https://github.com/Infaninio/Lego_Car.git
+```
+
+Build the Packages by using catkin_make again. You have to be in the top directory of the catkin Workspace. Source the Workspace to be able to run the rosnodes
+```shell 
+    cd ..
+    catkin_make install
+    source devel/setup.bash
+```
