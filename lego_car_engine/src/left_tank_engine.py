@@ -121,7 +121,6 @@ class Engine():
     def run(self):
         while not rospy.is_shutdown():
             self.output()
-        rospy.loginfo("Ende des Nodes")
     
 
 
