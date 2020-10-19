@@ -41,6 +41,12 @@ class Engine():
         self.mode = EnginePower.TANKMODE
         self.speed = 0
 
+        rospy.loginfo("Left Engine started")
+
+
+    def __del__(self):
+        GPIO.cleanup()
+
 
     def engine_carmode(self, data):
         #print("CARMODE")
@@ -61,14 +67,16 @@ class Engine():
 
 
     def engine_tankmode(self, data):
-        # rospy.logerr("TANKMODE")
+        # rospy.logerr(data)
         if data.left_engine >= 1:
             #left engine full speed forwards
+            print("left forward")
             GPIO.output(left_enable, 1)
             GPIO.output(left_back, 0)
             GPIO.output(left_for, 1)
         elif data.left_engine <= -1:
             #left engine full speed backwards
+            print("left backward")
             GPIO.output(left_enable, 1)
             GPIO.output(left_back, 1)
             GPIO.output(left_for, 0)
@@ -81,6 +89,7 @@ class Engine():
     #TODO implementing output if the CARMODE is used.
     def receive_data(self, data):
         #Distinguish which Mode is used, and call the appropriat function
+        #rospy.logerr("Data received")
         if data.mode == EnginePower.TANKMODE:
             self.engine_tankmode(data)
             self.mode = EnginePower.TANKMODE
@@ -91,6 +100,7 @@ class Engine():
 
     def output(self):
         if self.mode == EnginePower.TANKMODE:
+            # print("TankMode")
             return
         
         #Enable Engines but without output

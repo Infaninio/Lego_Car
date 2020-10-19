@@ -41,6 +41,11 @@ class Engine():
         self.mode = EnginePower.TANKMODE
         self.speed = 0
 
+        rospy.loginfo("Right Engine started")
+
+    def __del__(self):
+        GPIO.cleanup()
+
 
     def engine_carmode(self, data):
         #print("CARMODE")
