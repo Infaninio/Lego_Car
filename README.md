@@ -24,6 +24,23 @@ Install ROS, we do not install the full version. All the Vision based things run
 ```shell
     sudo apt install ros-noetic-ros-base
 ```
+Add all Systems, which want to communicat via ROS, with their IP-Adress and Hostname to assure that Messages will be received/sent correctly.
+```shell
+    sudo nano /etc/hosts
+```
+Add the Ip Adress of the Systems and the Name them e.g "10.0.0.1 Ros-Server". 
+Set the ROS_MASTER_URI on all PCs that are not running the roscore. Set the ROS_MASTER_URI to the System which will run the roscore process
+```shell
+    export ROS_MASTER_URI=http://Ros-Server:11311
+```
+
+Setup the Workspace see [Workspace Setup](#Setup the Workspace same for Host and Raspberry)
+
+
+
+## Error-Handling
+
+Raspberry does not receive any Messages 
 
 
 
@@ -62,3 +79,4 @@ Build the Packages by using catkin_make again. You have to be in the top directo
     catkin_make install
     source devel/setup.bash
 ```
+If you don't want to source and export the Names in every new Terminal add the Lines to ~/.bashrc
